@@ -4,7 +4,7 @@
 
 public interface YouNameItConstants {
 
-    int APPLICATION_WIDTH = 800;
+    int APPLICATION_WIDTH = 850;
 
     int APPLICATION_HEIGHT = 600;
 
