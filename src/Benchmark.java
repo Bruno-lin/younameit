@@ -24,12 +24,12 @@ public class Benchmark {
     // 随机生成名字
     String generateRandomName() {
         int a = 97;
-        String name = "";
+        StringBuilder name = new StringBuilder();
         for (int i = 0; i < NAME_LENGTH; i++) {
             // FIXME: 用了较为低效的String操作来生成随机字符串
-            name += (char) (random.nextInt(26) + a);    // 产生一个a-z之间的随机字母
+            name.append((char) (random.nextInt(26) + a));    // 产生一个a-z之间的随机字母
         }
-        return name;
+        return name.toString();
     }
 
     // 随机生成排名数据
