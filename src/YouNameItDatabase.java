@@ -1,12 +1,12 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class YouNameItDatabase {
-    public List<String> database;
+    public Map<String, String> database;
 
     public YouNameItDatabase(String filePath) throws IOException {
-        database = new ArrayList<>();
+        database = new HashMap<>();
 
         File file = new File(filePath);
         FileReader fileReader = new FileReader(file);
@@ -17,15 +17,16 @@ public class YouNameItDatabase {
             String line = bufferedReader.readLine();
             if (null == line)
                 break;
-            database.add(line);
+            //substring() 方法返回字符串的子字符串.
+            String name = line.substring(0, Integer.parseInt(" "));
+            database.put(name, line);
         }
     }
 
-    public String findRecord(String name) {
-
-        return database.stream()
-                .filter(record -> record.startsWith(name))
-                .findFirst()
-                .orElse(null);
+    public YouNameItRecord findRecord(String name) {
+         String key = database.get(name);
+         YouNameItRecord record = new YouNameItRecord();
+         record.parseRecord(key);
+         return record;
     }
 }

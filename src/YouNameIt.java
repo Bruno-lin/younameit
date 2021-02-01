@@ -11,6 +11,7 @@ public class YouNameIt extends ConsoleProgram implements YouNameItConstants {
     JTextField nameTextField;
     JButton clearButton,queryButton;
     RandomGenerator randomGenerator = RandomGenerator.getInstance();
+    YouNameItDatabase database;
 
     public void run() {
         setTitle("名白");
@@ -63,7 +64,8 @@ public class YouNameIt extends ConsoleProgram implements YouNameItConstants {
                 println("「" + nameTextField.getText() + "」这个名字好像不太受欢迎……");
             }
         }
-        if (command.equals("清除")) clearConsole();
+        if (command.equals("清除"))
+            clearConsole();
         if (command.equals("查询")) {
             if (randomGenerator.nextBoolean()) {
                 println("「" + nameTextField.getText() + "」这个名字非常吉利！");
