@@ -12,6 +12,9 @@ public class YouNameItRecord implements YouNameItRecordInterface {
      */
     @Override
     public void parseRecord(String dataLine) {
+        //split()通过指定分隔符对字符串进行切片
+        // \\s 表示 空格,回车,换行等空白符,
+        //+号表示一个或多个的意思
         ranks = dataLine.split("\\s+");
         name = ranks[0];
         ranks = Arrays.copyOfRange(ranks, 1, ranks.length);
