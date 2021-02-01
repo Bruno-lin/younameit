@@ -1,17 +1,20 @@
-import acm.program.*;
+import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ComponentEvent;
 
 public class YouNameIt extends ConsoleProgram implements YouNameItConstants {
 
     JLabel nameLabel;
     JTextField nameTextField;
+    JButton clearButton;
     RandomGenerator randomGenerator = RandomGenerator.getInstance();
 
     public void run() {
         setTitle("名白");
+
 
         nameLabel = new JLabel("姓名");
         add(nameLabel, NORTH);
@@ -22,7 +25,16 @@ public class YouNameIt extends ConsoleProgram implements YouNameItConstants {
         nameTextField.addActionListener(this);
         add(nameTextField, NORTH);
 
+        btn();
+
         setVisible(true);
+    }
+
+    private void btn() {
+        clearButton = new JButton("清除");
+        clearButton.setEnabled(true);
+        clearButton.addActionListener(this);
+        add(clearButton, EAST);
     }
 
     public void actionPerformed(ActionEvent event) {
@@ -33,6 +45,7 @@ public class YouNameIt extends ConsoleProgram implements YouNameItConstants {
                 println("「" + nameTextField.getText() + "」这个名字好像不太受欢迎……");
             }
         }
+        if (event.getActionCommand().equals("清除")) clearConsole();
     }
 
     /**
