@@ -22,5 +22,11 @@ public class YouNameItDatabase {
         }
     }
 
+    public String findRecord(String name) {
 
+        return database.stream()
+                .filter(record -> record.startsWith(name))
+                .findFirst()
+                .orElse(null);
+    }
 }
