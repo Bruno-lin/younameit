@@ -18,7 +18,7 @@ public class YouNameItDatabase {
             if (null == line)
                 break;
             //substring() 方法返回字符串的子字符串.
-            String name = line.substring(0, Integer.parseInt(" "));
+            String name = line.substring(0, line.indexOf(" "));
             database.put(name, line);
         }
     }
