@@ -17,7 +17,6 @@ public class YouNameItDatabase {
             String line = bufferedReader.readLine();
             if (null == line)
                 break;
-            System.out.println(line);
             database.add(line);
         }
     }
