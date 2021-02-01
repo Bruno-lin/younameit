@@ -22,7 +22,7 @@ public interface YouNameItRecordInterface {
      * @param decadesAfter1900 第几个十年，0代表1900-1909，1代表1910-1919，以此类推
      * @return 该名字在对应十年期间的排名
      */
-    String getRanking(String decadesAfter1900);
+    int getRanking(int decadesAfter1900);
 
     /**
      * 返回当前记录的字符串表示，方便用户迅速理解此记录的内容。例如"Daniel 56 55 44 40 22 19 18 11 6 7 9"应返回

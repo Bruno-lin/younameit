@@ -10,6 +10,7 @@ public class YouNameItRecord implements YouNameItRecordInterface {
      *
      * @param dataLine 一行数据，以字符串表示，一般来自names-data.txt中的某一行
      */
+    @Override
     public void parseRecord(String dataLine) {
         ranks = dataLine.split("\\s+");
         name = ranks[0];
@@ -21,6 +22,7 @@ public class YouNameItRecord implements YouNameItRecordInterface {
      *
      * @return 名字
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -31,8 +33,9 @@ public class YouNameItRecord implements YouNameItRecordInterface {
      * @param decadesAfter1900 第几个十年，0代表1900-1909，1代表1910-1919，以此类推
      * @return 该名字在对应十年期间的排名
      */
-    public String getRanking(String decadesAfter1900) {
-        return ranks[Integer.parseInt(decadesAfter1900)];
+    @Override
+    public int getRanking(int decadesAfter1900) {
+        return Integer.parseInt(ranks[decadesAfter1900]);
     }
 
     /**
@@ -42,6 +45,7 @@ public class YouNameItRecord implements YouNameItRecordInterface {
      *
      * @return 当前记录的字符串表示
      */
+    @Override
     public String toString() {
         return (name + " " + Arrays.toString(ranks));
     }
