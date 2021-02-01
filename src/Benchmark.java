@@ -11,7 +11,7 @@ public class Benchmark {
     public static final int NAME_LENGTH = 6;        // 名字的长度
     public static final int DATA_LENGTH = 10;       // 数据的长度，即有10个排名信息
     public static final int INSERT_SIZE = 1000;     // 插入1000个随机数据
-    public static final int QUERY_SIZE = 1000;      // 查询次数
+    public static final int QUERY_SIZE = 1000000;      // 查询次数
 
     Random random = new Random();
     List<Record> list = new ArrayList<>();
