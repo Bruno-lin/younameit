@@ -11,7 +11,6 @@ public class YouNameIt extends ConsoleProgram implements YouNameItConstants {
     JTextField nameTextField;
     JButton clearButton,queryButton;
     RandomGenerator randomGenerator = RandomGenerator.getInstance();
-    YouNameItDatabase database;
 
     public void run() {
         setTitle("名白");
