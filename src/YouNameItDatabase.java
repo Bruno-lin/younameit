@@ -1,20 +1,26 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class YouNameItDatabase {
     public List<String> database;
 
-    public YouNameItDatabase() {
+    public YouNameItDatabase(String filePath) throws IOException {
         database = new ArrayList<>();
 
-        database.add("Aaron 193 208 218 274 279 232 132 36 32 31 41");
-        database.add("Lily 295 341 353 456 713 873 902 0 705 326 126");
+        File file = new File(filePath);
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        while (true) {
+            // 一次读一行
+            String line = bufferedReader.readLine();
+            if (null == line)
+                break;
+            System.out.println(line);
+            database.add(line);
+        }
     }
 
-    public String findRecord(String name) {
-        return database.stream()
-                .filter(record -> record.startsWith(name))
-                .findFirst()
-                .orElse(null);
-    }
+
 }
