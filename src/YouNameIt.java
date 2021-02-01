@@ -9,43 +9,68 @@ public class YouNameIt extends ConsoleProgram implements YouNameItConstants {
 
     JLabel nameLabel;
     JTextField nameTextField;
-    JButton clearButton;
+    JButton clearButton,queryButton;
     RandomGenerator randomGenerator = RandomGenerator.getInstance();
 
     public void run() {
         setTitle("名白");
 
+        nameLabel();
 
+        nameTextField();
+
+        createButtons();
+        attachListeners();
+        addComponentsToProgram();
+
+        setVisible(true);
+    }
+
+    private void nameLabel() {
         nameLabel = new JLabel("姓名");
         add(nameLabel, NORTH);
+    }
 
+    private void nameTextField() {
         nameTextField = new JTextField(TEXT_FIELD_WIDTH);
         nameTextField.setEditable(true);
         nameTextField.setActionCommand("name-text-field");
         nameTextField.addActionListener(this);
         add(nameTextField, NORTH);
-
-        btn();
-
-        setVisible(true);
     }
 
-    private void btn() {
+    private void createButtons() {
         clearButton = new JButton("清除");
-        clearButton.setEnabled(true);
+        queryButton = new JButton("查询");
+    }
+
+    private void attachListeners() {
         clearButton.addActionListener(this);
-        add(clearButton, EAST);
+        queryButton.addActionListener(this);
+    }
+
+    private void addComponentsToProgram() {
+        add(queryButton,NORTH);
+        add(clearButton,NORTH);
     }
 
     public void actionPerformed(ActionEvent event) {
-        if (event.getActionCommand().equals("name-text-field")) {
+        var command = event.getActionCommand();
+        if (command.equals("name-text-field")) {
             if (randomGenerator.nextBoolean()) {
                 println("「" + nameTextField.getText() + "」这个名字非常吉利！");
             } else {
                 println("「" + nameTextField.getText() + "」这个名字好像不太受欢迎……");
             }
         }
-        if (event.getActionCommand().equals("清除")) clearConsole();
+        if (command.equals("清除")) clearConsole();
+        if (command.equals("查询")) {
+            if (randomGenerator.nextBoolean()) {
+                println("「" + nameTextField.getText() + "」这个名字非常吉利！");
+            } else {
+                println("「" + nameTextField.getText() + "」这个名字好像不太受欢迎……");
+            }
+        }
     }
 
     /**
