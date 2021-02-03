@@ -91,7 +91,7 @@ public class YouNameIt extends GraphicsProgram implements YouNameItConstants {
             case "查询":
                 searchHistory.add(name);
                 lineChart();
-                namePopup();
+//                namePopup();
                 break;
             case "清除":
                 repaintChart();
@@ -210,7 +210,7 @@ public class YouNameIt extends GraphicsProgram implements YouNameItConstants {
         clear();
         panelFrame();
         lineChart();
-        namePopup();
+//        namePopup();
     }
 
     private void initColors() {
