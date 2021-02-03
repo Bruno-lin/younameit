@@ -172,24 +172,26 @@ public class YouNameIt extends GraphicsProgram implements YouNameItConstants {
         int width = getWidth();
         int height = getHeight();
 
-        String name = nameTextField.getText();
-        for (int i = 0; i < 11; i++) {
-            if (searchHistory.size() > 1) {
-                remove(namePopupList.get(i));
-            }
 
-            if (youNameItDatabase.findRecord(name).getRanking(i) >= ranking[i]) {
-                ranking[i] = youNameItDatabase.findRecord(name).getRanking(i);
-                gLabel = new GLabel(name);
-                gLabel.setFont(font);
-                add(gLabel, (width / 11.0) / 2 - gLabel.getBounds().getWidth() / 2 + i * (width / 11.0), height * 0.03);
-                if (searchHistory.size() == 1) {
-                    namePopupList.add(i, gLabel);
-                } else {
-                    namePopupList.set(i, gLabel);
+        for (int i = 0; i < 11; i++) {
+            for (String name : searchHistory) {
+                name = nameTextField.getText();
+                if (searchHistory.size() > 1) {
+                    remove(namePopupList.get(i));
                 }
+                if (youNameItDatabase.findRecord(name).getRanking(i) >= ranking[i]) {
+                    ranking[i] = youNameItDatabase.findRecord(name).getRanking(i);
+                    gLabel = new GLabel(name);
+                    gLabel.setFont(font);
+                    add(gLabel, (width / 11.0) / 2 - gLabel.getBounds().getWidth() / 2 + i * (width / 11.0), height * 0.03);
+                    if (searchHistory.size() == 1) {
+                        namePopupList.add(i, gLabel);
+                    } else {
+                        namePopupList.set(i, gLabel);
+                    }
+                }
+                add(namePopupList.get(i));
             }
-            add(namePopupList.get(i));
         }
     }
 
@@ -209,7 +211,10 @@ public class YouNameIt extends GraphicsProgram implements YouNameItConstants {
         //清屏，重绘表格线条和横坐标
         clear();
         panelFrame();
-        lineChart();
+        if (nameTextField.getText() != null) {
+            lineChart();
+            namePopup();
+        }
     }
 
     private void initColors() {
