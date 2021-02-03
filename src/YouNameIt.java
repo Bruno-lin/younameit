@@ -188,8 +188,8 @@ public class YouNameIt extends GraphicsProgram implements YouNameItConstants {
                 } else {
                     namePopupList.set(i, gLabel);
                 }
-                add(namePopupList.get(i));
             }
+            add(namePopupList.get(i));
         }
     }
 
@@ -210,7 +210,6 @@ public class YouNameIt extends GraphicsProgram implements YouNameItConstants {
         clear();
         panelFrame();
         lineChart();
-        namePopup();
     }
 
     private void initColors() {
