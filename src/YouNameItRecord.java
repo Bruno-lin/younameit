@@ -38,7 +38,7 @@ public class YouNameItRecord implements YouNameItRecordInterface {
      */
     @Override
     public int getRanking(int decadesAfter1900) {
-        return Integer.parseInt(ranks[decadesAfter1900]);
+            return Integer.parseInt(ranks[decadesAfter1900]);
     }
 
     /**
