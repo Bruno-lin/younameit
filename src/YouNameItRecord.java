@@ -15,7 +15,7 @@ public class YouNameItRecord implements YouNameItRecordInterface {
         //split()通过指定分隔符对字符串进行切片
         // \\s 表示 空格,回车,换行等空白符,
         //+号表示一个或多个的意思
-//        if (dataLine == null) return;
+        if (dataLine == null) return;
         ranks = dataLine.split("\\s+");
         name = ranks[0];
         ranks = Arrays.copyOfRange(ranks, 1, ranks.length);
@@ -39,7 +39,7 @@ public class YouNameItRecord implements YouNameItRecordInterface {
      */
     @Override
     public int getRanking(int decadesAfter1900) {
-//        if (ranks == null) return -1;
+        if (ranks == null) return -1;
             return Integer.parseInt(ranks[decadesAfter1900]);
     }
 
